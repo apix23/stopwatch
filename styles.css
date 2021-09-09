@@ -1,6 +1,20 @@
+:root{
+    --grey : #363337;
+    --desactivate-grey : #1f1c22;
+    --dark-grey: #0d0c0e;
+    --green : #0b2a14;
+    --dark-green: #06160c;
+    --green-letters: #3ecb63;
+    --red: #350e0e;
+    --dark-red: #06160c;
+    --red-letters : #df3b33 ;
+    --background : #020003;
+}
+
 *{
     background-color: antiquewhite;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
