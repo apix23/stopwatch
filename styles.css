@@ -6,15 +6,113 @@
     --dark-green: #06160c;
     --green-letters: #3ecb63;
     --red: #350e0e;
-    --dark-red: #06160c;
+    --dark-red: #1d0709;
     --red-letters : #df3b33 ;
     --background : #020003;
+    --divisor-line : #211e21;
 }
 
 *{
-    background-color: antiquewhite;
+    
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+.red{
+    background-color: var(--red);
+}
+
+.green{
+    background-color: var(--green);
+}
+
+.red-letters{
+    color: var(--red-letters);
+}
+
+.green-letters{
+    color: var(--green-letters);
+}
+
+.grey{
+    background-color : var(--grey);
+}
+
+
+body{
+    background-color: white;
+    color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+main{
+    background-color: var(--background);
+    width: 375px;
+    height: 712px;
+    padding: 0 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+h1{
+    margin: 4rem 0;
+    text-align: center;
+    font-size: 5.5rem;
+    text-align: center;
+    
+}
+.controllers{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+}
+
+.button-outside{
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controllers__button-outside__lap-btn{
+    color: white;
+}
+.disabled{
+    filter: brightness(55%);
+}
+
+button{
+    border-radius: 50%;
+    border: 2px solid var(--background);
+    width: 65px;
+    height: 65px;
+    background-color: transparent;
+    
+}
+
+.button-outside:active:hover{
+    color: var(--green-letters);
+    filter: brightness(55%);
+}
+
+/* LAPS */
+.lab-container{
+    border-top: 2px solid var(--divisor-line);
+}
+
+.lab-container_lap{
+    padding: 1rem 0;
+    border-bottom: 2px solid var(--divisor-line);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
