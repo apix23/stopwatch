@@ -1,118 +1,119 @@
-:root{
-    --grey : #363337;
-    --desactivate-grey : #1f1c22;
-    --dark-grey: #0d0c0e;
-    --green : #0b2a14;
-    --dark-green: #06160c;
-    --green-letters: #3ecb63;
-    --red: #350e0e;
-    --dark-red: #1d0709;
-    --red-letters : #df3b33 ;
-    --background : #020003;
-    --divisor-line : #211e21;
+:root {
+  --grey: #363337;
+  --disabled-grey: #1f1c22;
+  --dark-grey: #0f0f0f;
+  --green: #0b2a14;
+  --dark-green: #06160c;
+  --green-letters: #3ecb63;
+  --grey-letters: #67646a;
+  --red: #350e0e;
+  --dark-red: #1d0709;
+  --red-letters: #df3b33;
+  --background: #020003;
+  --divisor-line: #211e21;
 }
 
-*{
-    
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.red{
-    background-color: var(--red);
+body {
+  height: 100vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.green{
-    background-color: var(--green);
+main {
+  background-color: var(--background);
+  width: 375px;
+  height: 712px;
+  padding: 0 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.red-letters{
-    color: var(--red-letters);
+h1 {
+  margin: 4rem 0;
+  text-align: center;
+  font-size: 5.5rem;
+  text-align: center;
 }
 
-.green-letters{
-    color: var(--green-letters);
+.controllers {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4rem;
 }
 
-.grey{
-    background-color : var(--grey);
+.controllers button {
+  border-radius: 50%;
+  border: 2px solid var(--background);
+  width: 65px;
+  height: 65px;
+}
+.controllers button:focus-visible {
+  outline: none;
 }
 
-
-body{
-    background-color: white;
-    color: white;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+.controllers__start {
+  background-color: var(--green);
+  box-shadow: 0 0 0 2px var(--green);
+  color: var(--green-letters);
 }
 
-main{
-    background-color: var(--background);
-    width: 375px;
-    height: 712px;
-    padding: 0 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.controllers__start:active {
+  background-color: var(--dark-green);
+  box-shadow: 0 0 0 2px var(--dark-green);
 }
 
-
-h1{
-    margin: 4rem 0;
-    text-align: center;
-    font-size: 5.5rem;
-    text-align: center;
-    
-}
-.controllers{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 4rem;
+.controllers__stop {
+  background-color: var(--red);
+  box-shadow: 0 0 0 2px var(--red);
+  color: var(--red-letters);
 }
 
-.button-outside{
-    border-radius: 50%;
-    width: 70px;
-    height: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.controllers__stop:active {
+  background-color: var(--dark-red);
+  box-shadow: 0 0 0 2px var(--dark-red);
 }
 
-.controllers__button-outside__lap-btn{
-    color: white;
-}
-.disabled{
-    filter: brightness(55%);
-}
-
-button{
-    border-radius: 50%;
-    border: 2px solid var(--background);
-    width: 65px;
-    height: 65px;
-    background-color: transparent;
-    
+.controllers__lap {
+  background-color: var(--grey);
+  box-shadow: 0 0 0 2px var(--grey);
+  color: white;
 }
 
-.button-outside:active:hover{
-    color: var(--green-letters);
-    filter: brightness(55%);
+.controllers__lap:active {
+  background-color: var(--disabled-grey);
+  box-shadow: 0 0 0 2px var(--disabled-grey);
+}
+
+.controllers__disabled {
+  background-color: var(--disabled-grey);
+  box-shadow: 0 0 0 2px var(--disabled-grey);
+  color: var(--grey-letters);
+}
+
+.controllers__disabled:active {
+  background-color: var(--dark-grey);
+  box-shadow: 0 0 0 2px var(--dark-grey);
 }
 
 /* LAPS */
-.lab-container{
-    border-top: 2px solid var(--divisor-line);
+.lap-container {
+  border-top: 2px solid var(--divisor-line);
+  height: 300px;
+  overflow-y: auto;
 }
 
-.lab-container_lap{
-    padding: 1rem 0;
-    border-bottom: 2px solid var(--divisor-line);
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-
+.lap-container_lap {
+  padding: 1rem 0;
+  border-bottom: 2px solid var(--divisor-line);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
