@@ -5,6 +5,7 @@ let startTime = 0;
 const timeLapContainer = [];
 const lapsNodeList = document.getElementsByClassName("lap-container_lap");
 const mainTimeEl = document.querySelector("#mainTime");
+const lapContainerEl = document.querySelector(".lap-container");
 
 const createLapContainer = (numberLapContent, timeLapContent) => {
   const lapEl = document.createElement("li");
@@ -23,12 +24,11 @@ const createLapContainer = (numberLapContent, timeLapContent) => {
 };
 
 const renderLap = () => {
-  lapContainer = document.querySelector(".lap-container");
-  lapContainer.insertBefore(
+  lapContainerEl.insertBefore(
     createLapContainer(`lap ${lapsNodeList.length + 1}`, "00:00.00"),
-    lapContainer.firstChild
+    lapContainerEl.firstChild
   );
-  startTimer(lapContainer.firstChild.lastChild);
+  startTimer(lapContainerEl.firstChild.lastChild, false);
 };
 
 function leftFillNum(num) {
@@ -65,14 +65,14 @@ const changeTime = (startTime, htmlElement, idAnimation) => {
   }
 };
 
-const startTimer = (htmlElement, idAnimation) => {
-  if (millisecondsPassed) {
+const startTimer = (htmlElement, isMainTime, idAnimation) => {
+  if (millisecondsPassed && isMainTime) {
     startTime = Date.now() + millisecondsPassed;
   } else {
     startTime = Date.now();
   }
 
-  return changeTime(startTime, htmlElement, idAnimation);
+  changeTime(startTime, htmlElement, idAnimation);
 };
 
 const changeButtonText = (textValue, textClass, target) => {
@@ -80,11 +80,12 @@ const changeButtonText = (textValue, textClass, target) => {
   target.innerHTML = textValue;
 };
 
-const stopTimer = () => {
+const stopTimer = (idLap, idMain) => {
   millisecondsPassed = startTime - Date.now();
 
-  window.cancelAnimationFrame(idMainTimerAnimation);
-  window.cancelAnimationFrame(idLapAnimation);
+  if (idMain) window.cancelAnimationFrame(idMain);
+
+  if (idLap) window.cancelAnimationFrame(idLapAnimation);
 };
 
 document
@@ -94,11 +95,29 @@ document
     if (target.innerHTML === "Start") {
       changeButtonText("Stop", "stop", target);
       changeButtonText("Lap", "lap", leftButton);
-      renderLap();
-      startTimer(mainTimeEl, "main");
+
+      if (!millisecondsPassed) {
+        renderLap();
+      } else {
+        startTimer(lapContainerEl.firstChild.lastChild, true);
+      }
+
+      startTimer(mainTimeEl, true, "main");
     } else {
       changeButtonText("Start", "start", target);
       changeButtonText("Reset", "lap", leftButton);
-      stopTimer();
+      stopTimer(idLapAnimation, idMainTimerAnimation);
+    }
+  });
+
+document
+  .querySelector("#leftButton")
+  .addEventListener("mouseup", ({ target }) => {
+    if (target.innerHTML === "Lap") {
+      stopTimer(idLapAnimation);
+      renderLap();
+    } else {
+      startTime = 0;
+      lapContainerEl.innerHTML = "";
     }
   });
