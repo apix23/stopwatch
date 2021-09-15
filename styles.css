@@ -11,6 +11,7 @@
   --red-letters: #df3b33;
   --background: #020003;
   --divisor-line: #211e21;
+  --scroll-bar: #5e5c5e;
 }
 
 * {
@@ -36,8 +37,8 @@ body {
 main {
   background-color: var(--background);
   width: 375px;
+  padding: 0 5px;
   height: 712px;
-  padding: 0 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -46,7 +47,7 @@ main {
 }
 
 h1 {
-  margin: 4rem 0;
+  margin: 4rem 20px;
   text-align: center;
   font-size: 4.8rem;
   text-align: center;
@@ -56,6 +57,7 @@ h1 {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  padding: 0 20px;
   margin-bottom: 4rem;
 }
 
@@ -116,8 +118,9 @@ h1 {
 
 /* LAPS */
 .lap-container {
-  border-top: 2px solid var(--divisor-line);
   height: 300px;
+  width: 100%;
+  padding: 0 1rem;
   overflow-y: auto;
 }
 
@@ -137,21 +140,27 @@ h1 {
   display: flex;
   justify-content: space-between;
 }
+ul {
+  border-top: 2px solid var(--divisor-line);
+  list-style: none;
+}
 
 /*SCROLL BAR*/
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 3px;
+  margin-right: 5px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: white;
+  background: #5e5c5e;
   border-radius: 10px;
 }
 
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #b30000;
+/* ::-webkit-scrollbar-thumb:hover {
+  background: white;
 }
+ */

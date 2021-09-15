@@ -5,7 +5,7 @@ let startTime = 0;
 const timeLapContainer = [];
 const lapsNodeList = document.getElementsByClassName("lap-container_lap");
 const mainTimeEl = document.querySelector("#mainTime");
-const lapContainerEl = document.querySelector(".lap-container");
+const lapContainerEl = document.querySelector("ul");
 
 const createLapContainer = (numberLapContent, timeLapContent) => {
   const lapEl = document.createElement("li");
@@ -118,6 +118,8 @@ document
       renderLap();
     } else {
       startTime = 0;
+      millisecondsPassed = 0;
+      mainTimeEl.innerHTML = "00:00.00";
       lapContainerEl.innerHTML = "";
     }
   });
