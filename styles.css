@@ -21,8 +21,8 @@
 }
 
 @font-face {
-  font-family: "Apple Font";
-  src: url("./fonts/SanFranciscoProFonts/SF-Pro-Text-Ultralight.otf");
+  font-family: "SF-Pro-Display-Ultralight";
+  src: url("./fonts/SanFranciscoProFonts/SF-Pro-Display-Ultralight.otf");
 }
 
 body {
@@ -31,7 +31,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Apple Font";
+  font-family: "SF-Pro-Display-Ultralight";
 }
 
 main {
@@ -46,7 +46,7 @@ main {
   font-variant-numeric: tabular-nums;
 }
 
-h1 {
+p {
   margin: 4rem 20px;
   text-align: center;
   font-size: 4.8rem;
@@ -66,7 +66,7 @@ h1 {
   border: 2px solid var(--background);
   width: 65px;
   height: 65px;
-  font-family: "Apple Font";
+  font-family: "SF-Pro-Display-Ultralight";
 }
 .controllers button:focus-visible {
   outline: none;
@@ -124,7 +124,7 @@ h1 {
   overflow-y: auto;
 }
 
-.fake-lap {
+.lap-container__empty-lap {
   padding: 1rem 0;
   border-bottom: 2px solid var(--divisor-line);
   width: 100%;
@@ -143,6 +143,14 @@ h1 {
 ul {
   border-top: 2px solid var(--divisor-line);
   list-style: none;
+}
+
+.lap-container__letter-red {
+  color: var(--red-letters);
+}
+
+.lap-container__letter-green {
+  color: var(--green-letters);
 }
 
 /*SCROLL BAR*/
