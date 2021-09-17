@@ -47,10 +47,9 @@ main {
 }
 
 p {
-  margin: 4rem 20px;
+  margin: 4rem 0.8rem;
   text-align: center;
-  font-size: 4.8rem;
-  text-align: center;
+  font-size: 4.5rem;
 }
 
 .controllers {
@@ -123,6 +122,11 @@ p {
   padding: 0 1rem;
   overflow-y: auto;
 }
+/* .lap-container:hover,
+.lap-container:active,
+.lap-container:focus {
+  overflow-y: auto;
+} */
 
 .lap-container__empty-lap {
   padding: 1rem 0;
@@ -171,4 +175,4 @@ ul {
 /* ::-webkit-scrollbar-thumb:hover {
   background: white;
 }
- */
+*/

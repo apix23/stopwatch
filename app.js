@@ -1,5 +1,7 @@
 const { log: c } = console;
 
+//3_599_000;
+
 let idMainTimerAnimation = null;
 let idLapAnimation = null;
 let millisecondsPassed = 0;
@@ -8,6 +10,14 @@ let timeLapContainer = [];
 const lapsNodeList = document.getElementsByClassName("lap-container_lap");
 const mainTimeEl = document.querySelector("#mainTime");
 const lapContainerEl = document.querySelector("ul");
+
+const runLocalTime = () => {
+  if (false) {
+    window.localStorage.setItem("millisecondsPassed", 0);
+  }
+};
+
+runLocalTime();
 
 const createLapElement = (numberLapContent, timeLapContent) => {
   const lapEl = document.createElement("li");
@@ -77,7 +87,7 @@ const renderLap = () => {
   const lapEl = createLapElement(`lap ${lapNumber}`, "00:00.00");
   const { lastChild: lapTimeEl } = lapEl;
 
-  lapContainerEl.insertBefore(lapEl, lapContainerEl.firstChild);
+  lapContainerEl.prepend(lapEl);
 
   paintLines();
   startTimer(lapTimeEl, false);
@@ -88,17 +98,20 @@ function addLeftZero(num) {
 }
 //!!Question about this function, line 49, would it be better to send it as an object instead of an array? or is the same?
 const timeFormatter = (timeInMilliseconds) => {
-  const minutes = addLeftZero(Math.trunc(timeInMilliseconds / 60000));
-  const seconds = addLeftZero(Math.trunc((timeInMilliseconds % 60000) / 1000));
+  const hours = Math.trunc((timeInMilliseconds / 3_600_000) % 60);
+  const minutes = addLeftZero(Math.trunc(timeInMilliseconds / 60_000) % 60);
+  const seconds = addLeftZero(Math.trunc((timeInMilliseconds % 60_000) / 1000));
   const centiSeconds = addLeftZero(
-    Math.trunc(((timeInMilliseconds % 60000) % 1000) / 10)
+    Math.trunc(((timeInMilliseconds % 60_000) % 1000) / 10)
   );
-  return [minutes, seconds, centiSeconds];
+  return [hours, minutes, seconds, centiSeconds];
 };
 
 const printTime = (htmlElement, timeValues) => {
-  [minutes, seconds, centiSeconds] = timeValues;
-  htmlElement.innerHTML = `${minutes}:${seconds}.${centiSeconds}`;
+  [hours, minutes, seconds, centiSeconds] = timeValues;
+  htmlElement.innerHTML = `${
+    hours ? `${hours}:` : ""
+  }${minutes}:${seconds}.${centiSeconds}`;
 };
 
 const changeTime = (startTime, htmlElement, idAnimation) => {
@@ -151,6 +164,8 @@ document
       if (!millisecondsPassed) {
         renderLap();
       } else {
+        // Just when i need to test
+        //renderLap();
         startTimer(lapContainerEl.firstChild.lastChild, true);
       }
 
